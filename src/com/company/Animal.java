@@ -4,7 +4,8 @@ public class Animal {
     final String species;
     String name;
     private Double weight;
-
+    Integer age;
+    String sex;
     static public final Double DEFAULT_ANIMAL_WEIGHT = 1.0;
     public Animal(String species) {
         this.species = species;

@@ -19,7 +19,7 @@ public class Main {
         Double newSalary = mySalary * 1.2;
         me.setSalary(newSalary);
         Car peugeot2=new Car("peugeot","308 SW",2015,35000.0);
-        Phone xiaomi= new Phone("xiaomi","note 8 pro","4.1.2",6.4);
+        Phone xiaomi= new Phone("xiaomi","note 8 pro","4.1.2",6.4,2019);
         me.mobilePhone=xiaomi;
         me.setCar(peugeot);
         boolean isEqual = peugeot.hashCode() == peugeot2.hashCode();
@@ -37,7 +37,8 @@ public class Main {
         System.out.println(peugeot.toString());
         System.out.println(xiaomi.toString());
 
-
+        xiaomi.turnOn();
+        peugeot.turnOn();
 
     }
 }

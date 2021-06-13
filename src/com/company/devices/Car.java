@@ -1,14 +1,10 @@
 package com.company.devices;
 import java.util.Objects;
-public class Car {
-    final String producer;
-    final String model;
-    final Integer yearOfProduction;
+public class Car extends Device {
+
     Double value;
     public Car(String producer, String model, Integer yearOfProduction,Double value) {
-        this.producer = producer;
-        this.model = model;
-        this.yearOfProduction = yearOfProduction;
+        super(producer, model, yearOfProduction);
         this.value=value;
     }
     public Double getValue(){
@@ -38,4 +34,11 @@ public class Car {
                 ", value=" + value +
                 '}';
     }
+
+    @Override
+    public void turnOn() {
+        System.out.println(this.producer+' '+this.model + " engine start");
+    }
+
+
 }

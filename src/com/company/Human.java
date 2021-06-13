@@ -3,17 +3,18 @@ import com.company.devices.Car;
 import com.company.devices.Phone;
 
 import java.util.Date;
-public class Human {
+public class Human extends Animal{
+    private static final String HUMAN_SPECIES = "homosapiens";
     String firstName;
     String lastName;
-    Integer age;
-    String sex;
+
     Phone mobilePhone;
     Animal pet;
     private Car car;
     private Double salary;
 
     public Human(Double salary){
+        super(HUMAN_SPECIES);
         this.salary = salary;
     }
     public Double getSalary(){

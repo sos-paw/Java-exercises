@@ -1,14 +1,12 @@
 package com.company.devices;
 
-public class Phone {
-    String producer;
-    String model;
+public class Phone extends Device {
+
     String operationSystem;
     Double screenSize;
 
-    public Phone(String producer, String model, String operationSystem, Double screenSize) {
-        this.producer = producer;
-        this.model = model;
+    public Phone(String producer, String model, String operationSystem, Double screenSize, Integer yearOfProduction) {
+        super(producer,model,yearOfProduction);
         this.operationSystem = operationSystem;
         this.screenSize = screenSize;
     }
@@ -26,5 +24,9 @@ public class Phone {
                 ", operationSystem='" + operationSystem + '\'' +
                 ", screenSize=" + screenSize +
                 '}';
+    }
+    @Override
+    public void turnOn() {
+        System.out.println(this.producer+' '+this.model +" is now enabled");
     }
 }
