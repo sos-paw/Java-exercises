@@ -1,6 +1,9 @@
 package com.company.devices;
+import com.company.Human;
+import com.company.salleable;
+
 import java.util.Objects;
-public class Car extends Device {
+public class Car extends Device implements salleable {
 
     Double value;
     public Car(String producer, String model, Integer yearOfProduction,Double value) {
@@ -41,4 +44,25 @@ public class Car extends Device {
     }
 
 
+    @Override
+    public void sell(Human buyer, Human seller, Double price) {
+        if(seller.getCar() != null) {
+            if (buyer.getCash() >= price)
+            {
+                buyer.setCar(seller.getCar());
+                seller.setCar(null);
+                buyer.setCash(-price);
+                seller.setCash(price);
+                System.out.println(buyer.toString() + " buy " + this.toString() + " from " + seller.toString() + " for " + price + "PLN");
+            }
+            else
+            {
+                System.out.println(buyer.toString() + " no money");
+            }
+        }
+        else
+        {
+            System.out.println(seller.toString() + " dont have car");
+        }
+    }
 }

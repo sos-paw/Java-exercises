@@ -8,14 +8,23 @@ public class Human extends Animal{
     String firstName;
     String lastName;
 
-    Phone mobilePhone;
+    public Phone mobilePhone;
     Animal pet;
     private Car car;
     private Double salary;
-
-    public Human(Double salary){
+    private Double cash;
+    public Human(Double salary,Double cash){
         super(HUMAN_SPECIES);
         this.salary = salary;
+        this.cash=cash;
+    }
+    public void setCash(Double cash)
+    {
+        this.cash = this.cash + cash;
+    }
+    public Double getCash()
+    {
+        return cash;
     }
     public Double getSalary(){
         System.out.println("Pobrana wypłata: " + this.salary);
@@ -33,8 +42,8 @@ public class Human extends Animal{
             this.salary = salary;
         }
     }
-    public Car getCar(Car car){
-        return car;
+    public Car getCar(){
+        return this.car;
     }
     public void setCar(Car car){
         if(this.salary > car.getValue()){
@@ -61,5 +70,9 @@ public class Human extends Animal{
                 ", car=" + car +
                 ", salary=" + salary +
                 '}';
+    }
+
+    public void sell(Human seller, Human buyer, Double price){
+        System.out.println("Nie możesz sprzedać człowieka, oszalałeś!?");
     }
 }

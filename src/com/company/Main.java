@@ -8,7 +8,9 @@ public class Main {
         // write your code here
         Animal dog = new Animal("dog");
         dog.name="Szarik";
-        Human me = new Human(10000.0);
+        Human me = new Human(10000.0,40000.0);
+        Human slave = new Human(10.0,200.0);
+        Human badMan = new Human(80000.0,120000.0);
         me.firstName="Pawel";
         me.lastName="Sosnowski";
         me.age=22;
@@ -20,7 +22,7 @@ public class Main {
         me.setSalary(newSalary);
         Car peugeot2=new Car("peugeot","308 SW",2015,35000.0);
         Phone xiaomi= new Phone("xiaomi","note 8 pro","4.1.2",6.4,2019);
-        me.mobilePhone=xiaomi;
+
         me.setCar(peugeot);
         boolean isEqual = peugeot.hashCode() == peugeot2.hashCode();
         if(isEqual == true){
@@ -40,5 +42,10 @@ public class Main {
         xiaomi.turnOn();
         peugeot.turnOn();
 
+        slave.sell(me,badMan,5.0);
+        xiaomi.sell(slave,me,15.0);
+        me.mobilePhone=xiaomi;
+        xiaomi.sell(slave,me,99999999999999.0);
+        xiaomi.sell(slave,me,15.0);
     }
 }
