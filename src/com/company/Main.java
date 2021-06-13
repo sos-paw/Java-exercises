@@ -4,50 +4,14 @@ public class Main {
         // write your code here
         Animal dog = new Animal("dog");
         dog.name="Szarik";
-
-        dog.feed();
-        dog.feed();
-        dog.feed();
-        dog.feed();
-        dog.feed();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-
-        dog.feed();
-        dog.feed();
-        dog.feed();
-        Human me = new Human();
+        Human me = new Human(10000.0);
         me.firstName="Pawel";
         Car peugeot=new Car("peugeot","308 SW",2015);
         me.car=peugeot;
         System.out.println(me.car);
+        Double mySalary = me.getSalary();
+        Double newSalary = mySalary * 1.2;
+        me.setSalary(newSalary);
+
     }
 }
