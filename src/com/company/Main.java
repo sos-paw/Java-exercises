@@ -45,5 +45,9 @@ public class Main {
         dog.feed();
         dog.feed();
         Human me = new Human();
+        me.firstName="Pawel";
+        Car peugeot=new Car("peugeot","308 SW",2015);
+        me.car=peugeot;
+        System.out.println(me.car);
     }
 }
