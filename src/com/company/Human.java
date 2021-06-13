@@ -7,7 +7,7 @@ public class Human {
     String sex;
     //Phone mobilePhone;
     Animal pet;
-    Car car;
+    private Car car;
     private Double salary;
 
     public Human(Double salary){
@@ -29,8 +29,22 @@ public class Human {
             this.salary = salary;
         }
     }
-
-
+    public Car getCar(Car car){
+        return car;
+    }
+    public void setCar(Car car){
+        if(this.salary > car.getValue()){
+            System.out.println("udało się kupić za gotówkę");
+            this.car = car;
+        }
+        else if(this.salary > car.getValue()/12.0){
+            System.out.println("udało się kupić na kredyt (no trudno)");
+            this.car = car;
+        }
+        else{
+            System.out.println("zapisz się na studia i znajdź nową robotę albo idź po podwyżkę");
+        }
+    }
 
 
 }

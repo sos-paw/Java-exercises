@@ -6,12 +6,12 @@ public class Main {
         dog.name="Szarik";
         Human me = new Human(10000.0);
         me.firstName="Pawel";
-        Car peugeot=new Car("peugeot","308 SW",2015);
-        me.car=peugeot;
-        System.out.println(me.car);
+        Car peugeot=new Car("peugeot","308 SW",2015,35000.0);
         Double mySalary = me.getSalary();
         Double newSalary = mySalary * 1.2;
         me.setSalary(newSalary);
 
+
+        me.setCar(peugeot);
     }
 }
