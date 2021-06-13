@@ -1,20 +1,21 @@
 package com.company;
+import com.company.creatures.Animal;
 import com.company.devices.Car;
 import com.company.devices.Phone;
 
 import java.util.Date;
-public class Human extends Animal{
+public class Human extends Animal {
     private static final String HUMAN_SPECIES = "homosapiens";
     String firstName;
     String lastName;
 
     public Phone mobilePhone;
-    Animal pet;
+    public Animal pet;
     private Car car;
     private Double salary;
     private Double cash;
     public Human(Double salary,Double cash){
-        super(HUMAN_SPECIES);
+        super("human",HUMAN_SPECIES,80.0);
         this.salary = salary;
         this.cash=cash;
     }

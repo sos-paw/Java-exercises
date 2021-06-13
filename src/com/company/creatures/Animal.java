@@ -1,35 +1,46 @@
-package com.company;
+package com.company.creatures;
 
-public class Animal implements salleable{
+import com.company.Human;
+import com.company.salleable;
+
+public abstract class Animal implements salleable, Feedable {
     final String species;
     String name;
-    private Double weight;
-    Integer age;
-    String sex;
-    static public final Double DEFAULT_ANIMAL_WEIGHT = 1.0;
-    public Animal(String species) {
+    public Double weight;
+    public Integer age;
+    public String sex;
+    //static public final Double DEFAULT_ANIMAL_WEIGHT = 1.0;
+    public Animal(String name,String species,Double weight) {
         this.species = species;
-
-        switch(this.species){
-            case "dog":this.weight = 20.0;break;
-            case "cat":this.weight = 2.0;break;
-            case "cow":this.weight = 400.0;break;
-            default:this.weight = DEFAULT_ANIMAL_WEIGHT;
-        }
+        this.name=name;
+        this.weight=weight;
 
     }
 
-
-
-    void feed(){
+    @Override
+    public void feed(double foodWeight) {
         if(weight>0){
-            this.weight +=1;
-            System.out.println("im fed, weight now: " + this.weight);
+            this.weight +=foodWeight;
+            System.out.println(this.name + " fed, weight now: " + this.weight);
         }
         else
         {
             System.out.println(
-                    "im dead"
+                    this.name + " dead"
+            );
+        }
+    }
+
+    @Override
+    public void feed(){
+        if(weight>0){
+            this.weight +=1;
+            System.out.println((this.name + " fed, weight now: " + this.weight));
+        }
+        else
+        {
+            System.out.println(
+                    this.name + " dead"
             );
         }
     }
@@ -79,4 +90,5 @@ public class Animal implements salleable{
             System.out.println(seller.toString() + " dont have pet");
         }
     }
+
 }
