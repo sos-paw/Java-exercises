@@ -1,11 +1,14 @@
 package com.company;
+import com.company.devices.Car;
+import com.company.devices.Phone;
+
 import java.util.Date;
 public class Human {
     String firstName;
     String lastName;
     Integer age;
     String sex;
-    //Phone mobilePhone;
+    Phone mobilePhone;
     Animal pet;
     private Car car;
     private Double salary;
@@ -46,5 +49,16 @@ public class Human {
         }
     }
 
-
+    @Override
+    public String toString() {
+        return "Human{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                ", pet=" + pet +
+                ", car=" + car +
+                ", salary=" + salary +
+                '}';
+    }
 }
