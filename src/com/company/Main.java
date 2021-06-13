@@ -3,8 +3,10 @@ package com.company;
 import com.company.creatures.Animal;
 import com.company.creatures.FarmAnimal;
 import com.company.creatures.Pet;
-import com.company.devices.Car;
-import com.company.devices.Phone;
+import com.company.devices.*;
+
+import java.net.MalformedURLException;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,13 +21,14 @@ public class Main {
         me.age=22;
         me.sex="male";
 
-        Car peugeot=new Car("peugeot","308 SW",2015,35000.0);
+        Car peugeot=new Diesel("peugeot","308 SW",2015,35000.0);
         Double mySalary = me.getSalary();
         Double newSalary = mySalary * 1.2;
         me.setSalary(newSalary);
-        Car peugeot2=new Car("peugeot","308 SW",2015,35000.0);
+        Car peugeot2=new Diesel("peugeot","308 SW",2015,35000.0);
         Phone xiaomi= new Phone("xiaomi","note 8 pro","4.1.2",6.4,2019);
-
+        Car toyota=new Electric("toyota","prius",2012,400.0);
+        Car opel=new LPG("opel","corsa",2005,100.0);
         me.setCar(peugeot);
         boolean isEqual = peugeot.hashCode() == peugeot2.hashCode();
         if(isEqual == true){
@@ -59,5 +62,19 @@ public class Main {
         pig.feed(10.5);
         pig.beEaten();
         pig.feed();
+
+        try {
+            xiaomi.installAnnApp("Spotify","5.10","spotify.pl");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        xiaomi.installAnApp("winamp");
+        String[] apps = {"spotify", "tidal", "googlemusic"};
+        xiaomi.installAnApp(apps);
+
+        peugeot.refuel();
+        toyota.refuel();
+        opel.refuel();
+
     }
 }

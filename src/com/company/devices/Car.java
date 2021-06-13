@@ -3,7 +3,7 @@ import com.company.Human;
 import com.company.salleable;
 
 import java.util.Objects;
-public class Car extends Device implements salleable {
+public abstract class Car extends Device implements salleable {
 
     Double value;
     public Car(String producer, String model, Integer yearOfProduction,Double value) {
@@ -65,4 +65,6 @@ public class Car extends Device implements salleable {
             System.out.println(seller.toString() + " dont have car");
         }
     }
+
+    public abstract void refuel();
 }
