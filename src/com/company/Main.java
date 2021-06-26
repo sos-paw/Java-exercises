@@ -9,13 +9,14 @@ import java.net.MalformedURLException;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         // write your code here
         //Animal dog = new Animal("szarik","dog",40.5);
 
         Human me = new Human(10000.0,40000.0);
         Human slave = new Human(10.0,200.0);
         Human badMan = new Human(80000.0,120000.0);
+        Human somsiad= new Human("somsiad","human",80.5,"Pawel","Oblakany",new Car[0]);
         me.firstName="Pawel";
         me.lastName="Sosnowski";
         me.age=22;
@@ -29,7 +30,7 @@ public class Main {
         Phone xiaomi= new Phone("xiaomi","note 8 pro","4.1.2",6.4,2019);
         Car toyota=new Electric("toyota","prius",2012,400.0);
         Car opel=new LPG("opel","corsa",2005,100.0);
-        me.setCar(peugeot);
+
         boolean isEqual = peugeot.hashCode() == peugeot2.hashCode();
         if(isEqual == true){
             System.out.println("same");
@@ -76,5 +77,34 @@ public class Main {
         toyota.refuel();
         opel.refuel();
 
+
+
+        me.setCar(peugeot,0);
+        me.setCar(toyota,2);
+        me.setCar(opel,1);
+
+        System.out.println(me.carsValue());
+
+
+
+        System.out.println(me.getCar(0));
+        System.out.println(me.getCar(1));
+        System.out.println(me.getCar(2));
+        System.out.println(me.getCar(3));
+        System.out.println(me.getCar(4));
+        me.sort();
+        System.out.println(me.getCar(0));
+        System.out.println(me.getCar(1));
+        System.out.println(me.getCar(2));
+        System.out.println(me.getCar(3));
+        System.out.println(me.getCar(4));
+
+
+        //peugeot.sell(slave,me, 9999999.0); //jak za to zaplacisz
+        //peugeot.sell(me,slave, 10.0);       //ukradzione auto
+        //peugeot.sell(somsiad,me,10.0); //brak miejsca
+        //System.out.println(slave.getCar(0));//sprawdzenie powodzenia
+        //peugeot.sell(slave,me, 9.0); //powodzenie
+        //System.out.println(slave.getCar(0));//sprawdzenie powodzenia
     }
 }

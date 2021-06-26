@@ -1,23 +1,33 @@
 package com.company;
 import com.company.creatures.Animal;
 import com.company.devices.Car;
+import com.company.devices.Komparator;
 import com.company.devices.Phone;
-
+import java.util.Arrays;
 import java.util.Date;
 public class Human extends Animal {
     private static final String HUMAN_SPECIES = "homosapiens";
+    private static final int DEFAULT_GARAGE_SIZE = 5;
     String firstName;
     String lastName;
 
+    public Human(String name, String species, Double weight, String firstName, String lastName, Car[] garage) {
+        super(name, species, weight);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.garage = garage;
+    }
+
     public Phone mobilePhone;
     public Animal pet;
-    private Car car;
+    private Car garage[];
     private Double salary;
     private Double cash;
     public Human(Double salary,Double cash){
         super("human",HUMAN_SPECIES,80.0);
         this.salary = salary;
         this.cash=cash;
+        this.garage=new Car[DEFAULT_GARAGE_SIZE];
     }
     public void setCash(Double cash)
     {
@@ -43,17 +53,17 @@ public class Human extends Animal {
             this.salary = salary;
         }
     }
-    public Car getCar(){
-        return this.car;
+    public Car getCar(Integer parkNumber){
+        return this.garage[parkNumber];
     }
-    public void setCar(Car car){
+    public void setCar(Car car,Integer parkNumber){
         if(this.salary > car.getValue()){
             System.out.println("udało się kupić za gotówkę");
-            this.car = car;
+            this.garage[parkNumber] = car;
         }
         else if(this.salary > car.getValue()/12.0){
             System.out.println("udało się kupić na kredyt (no trudno)");
-            this.car = car;
+            this.garage[parkNumber] = car;
         }
         else{
             System.out.println("zapisz się na studia i znajdź nową robotę albo idź po podwyżkę");
@@ -68,12 +78,62 @@ public class Human extends Animal {
                 ", age=" + age +
                 ", sex='" + sex + '\'' +
                 ", pet=" + pet +
-                ", car=" + car +
+                ", garagesize=" + garage.length +
                 ", salary=" + salary +
                 '}';
     }
 
     public void sell(Human seller, Human buyer, Double price){
         System.out.println("Nie możesz sprzedać człowieka, oszalałeś!?");
+    }
+
+    public Double carsValue() {
+        double all = 0.0;
+        for (Car cars : garage) {
+            if (cars != null) {
+                all += cars.value;
+            }
+        }
+        return all;
+    }
+
+    public boolean haveCar(Car car) {
+        for(int i=0;i<this.garage.length;i++){
+            if(car==this.garage[i])
+                return true;
+        }
+        return false;
+    }
+
+    public boolean haveFreeSpace() {
+        for (int i=0;i< this.garage.length;i++) {
+            if (this.garage[i]==null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void removeCar(Car car) {
+        for (int i = 0; i < this.garage.length; i++) {
+            if (this.garage[i] == car) {
+                this.garage[i] = null;
+            }
+        }
+    }
+
+    public void addCar(Car car) {
+        for (int i = 0; i < this.garage.length; i++) {
+                if (this.garage[i] == null) {
+                    this.garage[i] = car;
+                    break;
+                }
+            }
+        }
+
+
+    public void sort(){
+        Komparator cars = new Komparator();
+        Arrays.sort(garage, cars);
     }
 }

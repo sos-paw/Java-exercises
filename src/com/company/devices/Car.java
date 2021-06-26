@@ -5,7 +5,7 @@ import com.company.salleable;
 import java.util.Objects;
 public abstract class Car extends Device implements salleable {
 
-    Double value;
+
     public Car(String producer, String model, Integer yearOfProduction,Double value) {
         super(producer, model, yearOfProduction);
         this.value=value;
@@ -44,26 +44,22 @@ public abstract class Car extends Device implements salleable {
     }
 
 
-    @Override
-    public void sell(Human buyer, Human seller, Double price) {
-        if(seller.getCar() != null) {
-            if (buyer.getCash() >= price)
-            {
-                buyer.setCar(seller.getCar());
-                seller.setCar(null);
-                buyer.setCash(-price);
-                seller.setCash(price);
-                System.out.println(buyer.toString() + " buy " + this.toString() + " from " + seller.toString() + " for " + price + "PLN");
-            }
-            else
-            {
-                System.out.println(buyer.toString() + " no money");
-            }
+
+    public void sell(Human buyer, Human seller, Double price) throws Exception{
+        if(!seller.haveCar(this)){
+            throw new Exception("UWAGA UKRADZIONE AUTO!");
         }
-        else
-        {
-            System.out.println(seller.toString() + " dont have car");
+        if(!buyer.haveFreeSpace()){
+            throw new Exception("a gdzie to chcesz trzymac!?");
         }
+        if(buyer.getCash()<price){
+            throw new Exception("jak za to zaplacisz!?");
+        }
+        seller.removeCar(this);
+        buyer.addCar(this);
+        seller.setCash(seller.getCash()+price);
+        buyer.setCash(buyer.getCash()-price);
+        System.out.println("sprzedano z powodzeniem!");
     }
 
     public abstract void refuel();

@@ -4,7 +4,7 @@ import com.company.Human;
 import com.company.salleable;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
+
 public class Phone extends Device implements salleable {
 
     String operationSystem;
