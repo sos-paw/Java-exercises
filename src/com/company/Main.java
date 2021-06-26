@@ -6,12 +6,17 @@ import com.company.creatures.Pet;
 import com.company.devices.*;
 
 import java.net.MalformedURLException;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws Exception {
         // write your code here
         //Animal dog = new Animal("szarik","dog",40.5);
+
+
+
+
 
         Human me = new Human(10000.0,40000.0);
         Human slave = new Human(10.0,200.0);
@@ -37,6 +42,9 @@ public class Main {
         }else {
             System.out.println("different");
         }
+
+
+
 
         System.out.println((peugeot).equals(peugeot2));
         System.out.println(peugeot);
@@ -104,7 +112,15 @@ public class Main {
         //peugeot.sell(me,slave, 10.0);       //ukradzione auto
         //peugeot.sell(somsiad,me,10.0); //brak miejsca
         //System.out.println(slave.getCar(0));//sprawdzenie powodzenia
-        //peugeot.sell(slave,me, 9.0); //powodzenie
+        peugeot.sell(slave,me, 9.0); //powodzenie
         //System.out.println(slave.getCar(0));//sprawdzenie powodzenia
+
+        peugeot.sell(badMan,slave,5.5);
+        peugeot.sell(me,badMan,15.5);
+        System.out.println(peugeot.numberOfTransactions());//liczba transakcji sprzedaży w których uczestniczył samochód
+        System.out.println(peugeot.isEverOwner(me));//czy jakiś człowiek był właścicielem pojazdu
+        System.out.println(peugeot.isAsoldB(me,slave));//czy człowiek A sprzedał samochód człowiekowi B
+
+
     }
 }

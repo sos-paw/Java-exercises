@@ -2,8 +2,12 @@ package com.company.devices;
 import com.company.Human;
 import com.company.salleable;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 public abstract class Car extends Device implements salleable {
+
+
 
 
     public Car(String producer, String model, Integer yearOfProduction,Double value) {
@@ -13,6 +17,9 @@ public abstract class Car extends Device implements salleable {
     public Double getValue(){
         return value;
     }
+
+    List<Human> owners = new LinkedList<Human>();
+
 
     @Override
     public boolean equals(Object o) {
@@ -46,7 +53,7 @@ public abstract class Car extends Device implements salleable {
 
 
     public void sell(Human buyer, Human seller, Double price) throws Exception{
-        if(!seller.haveCar(this)){
+        if(!seller.haveCar(this) && (owners.get(owners.size() - 1)) != seller){
             throw new Exception("UWAGA UKRADZIONE AUTO!");
         }
         if(!buyer.haveFreeSpace()){
@@ -60,6 +67,23 @@ public abstract class Car extends Device implements salleable {
         seller.setCash(seller.getCash()+price);
         buyer.setCash(buyer.getCash()-price);
         System.out.println("sprzedano z powodzeniem!");
+        owners.add(buyer);
+    }
+
+    public Boolean isEverOwner(Human owner) {
+        return owners.contains(owner);
+    }
+
+    public Boolean isAsoldB(Human seller, Human buyer) {
+        for (int i = 0; i < (owners.size() - 1); i++){
+            if((owners.get(i) == seller) && (owners.get(i+1) == buyer)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public int numberOfTransactions(){
+        return (owners.size() -1) ;
     }
 
     public abstract void refuel();
