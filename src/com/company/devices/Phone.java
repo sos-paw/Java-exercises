@@ -4,6 +4,7 @@ import com.company.Human;
 import com.company.salleable;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.*;
 
 public class Phone extends Device implements salleable {
 
@@ -20,6 +21,8 @@ public class Phone extends Device implements salleable {
         return "4.23.1";
     }
 
+    Set<Application> apps = new LinkedHashSet();
+    public Human owner;
 
     @Override
     public String toString() {
@@ -88,4 +91,58 @@ public class Phone extends Device implements salleable {
         System.out.println("app " + url.getFile() + " installed");
     }
 
+    public void installApp(Application application){
+        if(owner.getCash()>=application.price){
+            apps.add(application);
+            owner.setCash(owner.getCash()-application.price);
+            System.out.println("udalo sie kupic i zainstalowac appke");
+        }
+        else{
+            System.out.println("nie masz dosc pieniedzy! potrzebujesz: " + application.price);
+        }
+    }
+    public boolean isAppInstalled(Application application){
+        return apps.contains(application);
+    }
+
+    public boolean isAppInstalled(String name){
+        List<Application> lista = new ArrayList<Application>(apps);
+        for (int i = 0; i < lista.size(); i++) {
+            if (name.equals(lista.get(i).name))
+                return true;
+        }
+        return false;
+    }
+    public void freeApps(){
+        List<Application> lista = new ArrayList<Application>(apps);
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).price == 0.0) {
+                System.out.print(lista.get(i).name + ", ");
+            }
+        }
+    }
+    public Double allAppsValue() {
+        Double value = 0.0;
+        for (Application app : apps) {
+            value += app.price;
+        }
+
+        return value;
+    }
+    public void appsByPrice(){
+        List<Application> lista = new ArrayList<Application>(this.apps);
+        KomparatorCena byprice = new KomparatorCena();
+        Collections.sort(lista, byprice);
+        for(Application app: lista){
+            System.out.println("Name: " + app.name + "   price: " + app.price);
+        }
+    }
+    public void appsByName(){
+        List<Application> lista = new ArrayList<Application>(this.apps);
+        KomparatorNazwa byname = new KomparatorNazwa();
+        Collections.sort(lista, byname);
+        for(Application app: lista){
+            System.out.println("Name: " + app.name + "   price: " + app.price);
+        }
+    }
 }

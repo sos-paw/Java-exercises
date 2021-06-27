@@ -112,15 +112,41 @@ public class Main {
         //peugeot.sell(me,slave, 10.0);       //ukradzione auto
         //peugeot.sell(somsiad,me,10.0); //brak miejsca
         //System.out.println(slave.getCar(0));//sprawdzenie powodzenia
-        peugeot.sell(slave,me, 9.0); //powodzenie
+        //peugeot.sell(slave,me, 9.0); //powodzenie
         //System.out.println(slave.getCar(0));//sprawdzenie powodzenia
 
-        peugeot.sell(badMan,slave,5.5);
-        peugeot.sell(me,badMan,15.5);
-        System.out.println(peugeot.numberOfTransactions());//liczba transakcji sprzedaży w których uczestniczył samochód
-        System.out.println(peugeot.isEverOwner(me));//czy jakiś człowiek był właścicielem pojazdu
-        System.out.println(peugeot.isAsoldB(me,slave));//czy człowiek A sprzedał samochód człowiekowi B
+        //peugeot.sell(badMan,slave,5.5);
+        //peugeot.sell(me,badMan,15.5);
+        //System.out.println(peugeot.numberOfTransactions());//liczba transakcji sprzedaży w których uczestniczył samochód
+        //System.out.println(peugeot.isEverOwner(me));//czy jakiś człowiek był właścicielem pojazdu
+        //System.out.println(peugeot.isAsoldB(me,slave));//czy człowiek A sprzedał samochód człowiekowi B
 
+        System.out.println(me.getCash());
+        xiaomi.owner=me;
+        me.setCash(5000.0);
+        Application spotify = new Application("Spotify","latest",15.0);
+        Application tidal = new Application("Tidal","12.5",10.0);
+        Application ytmusic = new Application("YouTube Music","10.9",4.0);
+        Application winamp = new Application("Winamp","15.0",0.0);
+        Application aimp = new Application("AIMP","10.9",0.0);
+        xiaomi.installApp(spotify);
+        xiaomi.installApp(ytmusic);
+        xiaomi.installApp(winamp);
+        xiaomi.installApp(aimp);
+        System.out.println(me.getCash());
 
+        System.out.println(xiaomi.isAppInstalled("Spotify"));
+        System.out.println(xiaomi.isAppInstalled(spotify));
+        System.out.println(xiaomi.isAppInstalled("Tidal"));
+        System.out.println(xiaomi.isAppInstalled(tidal));
+        xiaomi.freeApps();//Darmowe zainstalowane aplikacje
+        System.out.println();
+        System.out.println(xiaomi.allAppsValue());//wartosc wszystkich zainstalowanych appek
+        System.out.println("sortowanie po cenie: ");
+        xiaomi.appsByPrice();
+        System.out.println();
+        System.out.println();
+        System.out.println("sortowanie po nazwie: ");
+        xiaomi.appsByName();
     }
 }

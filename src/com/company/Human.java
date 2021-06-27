@@ -31,7 +31,7 @@ public class Human extends Animal {
     }
     public void setCash(Double cash)
     {
-        this.cash = this.cash + cash;
+        this.cash = cash;
     }
     public Double getCash()
     {
