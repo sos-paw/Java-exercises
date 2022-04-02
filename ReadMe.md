@@ -1,4 +1,4 @@
-# BMI Calculator mobile version
+# Java exercises
 
 ## Table of contents
 * [General info](#general-info)
